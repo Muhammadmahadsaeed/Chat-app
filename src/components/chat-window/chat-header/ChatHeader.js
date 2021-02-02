@@ -5,7 +5,7 @@ import { Avatar } from 'antd'
 export class ChatHeader extends Component {
     render() {
         const data = this.props.data ? this.props.data : {};
-        console.log(data)
+       
         return (
             <div className="chat-header">
                 <div className="chat-info">

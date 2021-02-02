@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button } from 'antd';
 import AttachmentIcon from '../../controls/icons/attachment-icon/AttachmentIcon'
 export class InputBox extends Component {
     render() {
@@ -12,7 +13,7 @@ export class InputBox extends Component {
                         <input type="text" placeholder="Type here" />
                     </div>
                     <div style={{ display: 'inline-block' }}>
-                        <button>Send</button>
+                    <Button type="primary">Send</Button>
                     </div>
                 </div>
             </div>

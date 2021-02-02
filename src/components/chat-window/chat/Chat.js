@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 
 export class Chat extends Component {
     render() {
+        const data = this.props.data ? this.props.data : {};
+        console.log("chat header====",data)
+        
         return (
             <div>
                 <div className="message-wrapper">

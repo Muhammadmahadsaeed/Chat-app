@@ -8,6 +8,7 @@ import ChatThumb from './chat-thumb/ChatThumb'
 import { connect } from "react-redux"
 import { Actions } from './../../store/actions'
 import axios from 'axios'
+import Chat from '../chat-window/chat/Chat'
 class UsersWindow extends Component {
     constructor(props) {
         super(props);
@@ -40,6 +41,7 @@ class UsersWindow extends Component {
                                 return (
                                     <div onClick={() => this.props.showChat(e)} key={i}>
                                         <ChatThumb data={e} />
+                                        {/* <Chat data={e} /> */}
                                     </div>
                                 )
                             })
