@@ -4,6 +4,7 @@ import Chat from './chat/Chat'
 
 import { connect } from 'react-redux'
 import InputBox from './input-box/InputBox';
+import ChatContent from './ChatContent';
 // import { ACtions } from './../../store/actions'
 
 export class ChatWindow extends Component {
@@ -18,12 +19,12 @@ export class ChatWindow extends Component {
         const { currentUserChat } = this.props;
         return (
             <div className="chat-window-wrapper">
-                <div>
+                {/* <div>
                     <ChatHeader data={currentUserChat} />
-                </div>
+                </div> */}
 
                 <div className="chat-wrapper">
-                    <Chat data={currentUserChat}/>
+                    <ChatContent {...this.props}/>
                 </div>
 
                 <div>

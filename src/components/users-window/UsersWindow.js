@@ -28,6 +28,11 @@ class UsersWindow extends Component {
                 console.log(err.message)
             })
     }
+    showChat(id){
+       
+        console.log("show chat===",this.props)
+        this.props.history.push(`/${id}`)
+    }
     render() {
         const { data } = this.state;
         return (
@@ -39,7 +44,7 @@ class UsersWindow extends Component {
                         {
                             data.map((e, i) => {
                                 return (
-                                    <div onClick={() => this.props.showChat(e)} key={i}>
+                                    <div onClick={() => this.showChat(e.user_id)} key={i}>
                                         <ChatThumb data={e} />
 
                                     </div>

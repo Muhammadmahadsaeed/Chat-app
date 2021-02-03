@@ -17,8 +17,8 @@ export class MainScreen extends Component {
             <div className="main-wrapper">
                 <Nav />
                 <div className="main__chatbody">
-                    <UserWindow />
-                    <ChatWindow />
+                    <UserWindow {...this.props}/>
+                    <ChatWindow {...this.props} />
                 </div>
             </div>
         )

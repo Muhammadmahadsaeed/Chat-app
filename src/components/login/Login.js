@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
-import { Link } from 'react-router-dom'
+import { Form, Icon, Input, Button } from 'antd';
+
 
 import axios from 'axios'
 
