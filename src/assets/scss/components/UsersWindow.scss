@@ -51,10 +51,11 @@
 
 .user-window-wraper {
   .recent-chats {
+    // overflow: auto;
+    // height: 84vh;
+    margin-top: 30px;
     overflow: auto;
-    height: 84vh;
-    // background-color: gray;
-    border-right: 1px solid gray;
+    max-height: calc(100vh - calc(80vh / 2));
   }
   .chat-thumb {
     display: flex;

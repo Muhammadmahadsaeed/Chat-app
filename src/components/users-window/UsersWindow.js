@@ -8,7 +8,7 @@ import ChatThumb from './chat-thumb/ChatThumb'
 import { connect } from "react-redux"
 import { Actions } from './../../store/actions'
 import axios from 'axios'
-import Chat from '../chat-window/chat/Chat'
+
 class UsersWindow extends Component {
     constructor(props) {
         super(props);
@@ -21,7 +21,7 @@ class UsersWindow extends Component {
 
         axios.post(`http://192.168.0.96:401/bwccrm/getContactsTotal`, { user_id: user.data.user_id, campaign_id: 1 })
             .then(res => {
-                console.log(res.data.contacts)
+                // console.log(res.data.contacts)
                 this.setState({ data: res.data.contacts })
             })
             .catch((err) => {
@@ -41,7 +41,7 @@ class UsersWindow extends Component {
                                 return (
                                     <div onClick={() => this.props.showChat(e)} key={i}>
                                         <ChatThumb data={e} />
-                                        {/* <Chat data={e} /> */}
+
                                     </div>
                                 )
                             })

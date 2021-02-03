@@ -36,6 +36,7 @@ export class ChatWindow extends Component {
 
 
 const mapStateToProps = (state) => {
+   
     return {
         currentUserChat: state.Main.currentUserChat
     }

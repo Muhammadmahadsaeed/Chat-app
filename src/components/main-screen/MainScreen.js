@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import UserWindow from './../users-window/UsersWindow'
 import ChatWindow from './../chat-window/ChatWindow'
-
+import Nav from '../nav/Nav'
 export class MainScreen extends Component {
     constructor(props) {
         super(props)
@@ -15,8 +15,11 @@ export class MainScreen extends Component {
     render() {
         return (
             <div className="main-wrapper">
-                <UserWindow />
-                <ChatWindow />
+                <Nav />
+                <div className="main__chatbody">
+                    <UserWindow />
+                    <ChatWindow />
+                </div>
             </div>
         )
     }

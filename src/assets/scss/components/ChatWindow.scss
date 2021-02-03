@@ -40,30 +40,31 @@
       display: flex;
       // justify-content: flex-end;
       //  border:1px solid red;
-      .message{
+      .message {
         padding: 5px 8px;
         border-radius: 8px;
         margin-bottom: 3px;
         border: 1px solid #cccccc;
       }
     }
-    .sent{
+    .sent {
       background: lightcoral;
       margin-left: auto;
     }
-    .received{
+    .received {
       text-align: left;
     }
   }
   .input-box {
     background: rgba(247, 243, 243, 0.404);
     padding: 10px 10px;
-    // > div {
-    //   // display: flex;
-    //   border-radius: 3rem;
-    //   background: #ffffff;
-    //   overflow: hidden;
-     
+    > div {
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      border-radius: 8px;
+      align-items: center;
       .search-input {
         width: 80%;
         display: inline-block;
@@ -72,9 +73,8 @@
           outline: none;
           padding: 10px 30px 10px 10px;
           width: 80%;
-         
         }
       }
-    // }
+    }
   }
 }
