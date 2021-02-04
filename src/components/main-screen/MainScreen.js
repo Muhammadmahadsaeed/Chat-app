@@ -7,11 +7,18 @@ import Nav from '../nav/Nav'
 export class MainScreen extends Component {
     constructor(props) {
         super(props)
+<<<<<<< HEAD
         let user = localStorage.getItem('user')
         if (!user) {
             console.log("user nh h")
             this.props.history.push('/login')
         }
+=======
+        // let user = localStorage.getItem('user')
+        // if (!user) {
+        //     this.props.history.push('/login')
+        // }
+>>>>>>> 5dac6d23c5e2d380bc86a4c6f0c6f071e374975b
 
     }
     render() {

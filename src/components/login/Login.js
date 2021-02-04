@@ -10,6 +10,7 @@ import axios from 'axios'
 
 class Login extends Component {
 
+<<<<<<< HEAD
     handleSubmit = values => {
         axios.post(`http://192.168.0.96:401/bwccrm/login`, { email: values.email, password: values.password })
             .then(res => {
@@ -21,6 +22,26 @@ class Login extends Component {
             })
 
 
+=======
+    handleSubmit = e => {
+        e.preventDefault();
+        this.props.form.validateFields((err, values) => {
+            // console.log(this.props.history)
+            
+            // if (!err) {
+            //     console.log('Received values of form: ', values);
+            //     axios.post(`http://192.168.0.96:401/bwccrm/login`, { email: values.email, password: values.password })
+            //         .then(res => {
+                       
+            //             localStorage.setItem('user', JSON.stringify(res.data))
+                        this.props.history.push('/')
+                    // })
+                    // .catch((err) => {
+                    //     console.log(err.message)
+                    // })
+            // }
+        });
+>>>>>>> 5dac6d23c5e2d380bc86a4c6f0c6f071e374975b
     };
 
     render() {
