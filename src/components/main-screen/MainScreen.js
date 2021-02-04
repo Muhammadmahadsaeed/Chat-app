@@ -6,10 +6,10 @@ import Nav from '../nav/Nav'
 export class MainScreen extends Component {
     constructor(props) {
         super(props)
-        let user = localStorage.getItem('user')
-        if (!user) {
-            this.props.history.push('/login')
-        }
+        // let user = localStorage.getItem('user')
+        // if (!user) {
+        //     this.props.history.push('/login')
+        // }
 
     }
     render() {

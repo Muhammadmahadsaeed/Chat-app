@@ -11,18 +11,18 @@ class Login extends Component {
         this.props.form.validateFields((err, values) => {
             // console.log(this.props.history)
             
-            if (!err) {
-                console.log('Received values of form: ', values);
-                axios.post(`http://192.168.0.96:401/bwccrm/login`, { email: values.email, password: values.password })
-                    .then(res => {
+            // if (!err) {
+            //     console.log('Received values of form: ', values);
+            //     axios.post(`http://192.168.0.96:401/bwccrm/login`, { email: values.email, password: values.password })
+            //         .then(res => {
                        
-                        localStorage.setItem('user', JSON.stringify(res.data))
+            //             localStorage.setItem('user', JSON.stringify(res.data))
                         this.props.history.push('/')
-                    })
-                    .catch((err) => {
-                        console.log(err.message)
-                    })
-            }
+                    // })
+                    // .catch((err) => {
+                    //     console.log(err.message)
+                    // })
+            // }
         });
     };
 
