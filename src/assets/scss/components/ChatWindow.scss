@@ -31,9 +31,11 @@
 }
 
 .chat-window-wrapper {
+ 
   display: flex;
   flex-direction: column;
   .chat-wrapper {
+    
     flex: 1;
     padding: 0px 10%;
     .message-wrapper {
@@ -56,25 +58,29 @@
     }
   }
   .input-box {
+    
     background: rgba(247, 243, 243, 0.404);
     padding: 10px 10px;
-    > div {
-      background-color: #fff;
-      display: flex;
-      justify-content: space-between;
-      padding: 10px;
-      border-radius: 8px;
-      align-items: center;
-      .search-input {
-        width: 80%;
-        display: inline-block;
-        input {
-          border: none;
-          outline: none;
-          padding: 10px 30px 10px 10px;
-          width: 80%;
-        }
-      }
-    }
+
+    // > div {
+    //   background-color: #fff;
+    //   display: flex;
+    //   justify-content: space-between;
+    //   padding: 10px;
+    //   border-radius: 8px;
+    //   align-items: center;
+    //   .search-input {
+    //     width: 80%;
+    //     display: inline-block;
+    //     input {
+    //       height: 4.75rem;
+    //       border: none;
+    //       outline: none;
+    //       padding: 0 1.25rem;
+    //       // padding: 10px 30px 10px 10px;
+    //       width: 80%;
+    //     }
+    //   }
+    // }
   }
 }

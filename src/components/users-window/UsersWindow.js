@@ -18,8 +18,13 @@ class UsersWindow extends Component {
     }
     componentDidMount() {
         let user = JSON.parse(localStorage.getItem('user'))
-
-        axios.post(`http://192.168.0.96:401/bwccrm/getContactsTotal`, { user_id: user.data.user_id, campaign_id: 1 })
+        // let user = localStorage.getItem('user')
+        if (!user) {
+          
+            this.props.history.push('/login')
+        }
+        else{
+            axios.post(`http://192.168.0.96:401/bwccrm/getContactsUser`, { user_id: user.data.user_id, loginuser_id: user.data.user_id })
             .then(res => {
                 // console.log(res.data.contacts)
                 this.setState({ data: res.data.contacts })
@@ -27,10 +32,10 @@ class UsersWindow extends Component {
             .catch((err) => {
                 console.log(err.message)
             })
+        }
+      
     }
     showChat(id){
-       
-        console.log("show chat===",this.props)
         this.props.history.push(`/${id}`)
     }
     render() {

@@ -20,8 +20,9 @@ class ChatContent extends React.Component{
     return (
      
       <Switch>
-        <Route path='/:id' component={ChatWindow} />
-        <Route  path='/' component={ConversationEmpty} />
+      
+        <Route exact  path='/' component={ConversationEmpty} />
+        <Route exact path='/:id' component={ChatWindow} />
       </Switch>
     )
   }

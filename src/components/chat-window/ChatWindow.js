@@ -8,6 +8,7 @@ import ChatContent from './ChatContent';
 // import { ACtions } from './../../store/actions'
 
 export class ChatWindow extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -19,17 +20,17 @@ export class ChatWindow extends Component {
         const { currentUserChat } = this.props;
         return (
             <div className="chat-window-wrapper">
-                {/* <div>
+                <div>
                     <ChatHeader data={currentUserChat} />
-                </div> */}
+                </div>
 
                 <div className="chat-wrapper">
-                    <ChatContent {...this.props}/>
+                    <Chat {...this.props} />
                 </div>
 
-                <div>
-                    <InputBox />
-                </div>
+                {/* <div>
+                    <InputBox {...this.props}/>
+                </div> */}
             </div>
         )
     }
@@ -37,7 +38,7 @@ export class ChatWindow extends Component {
 
 
 const mapStateToProps = (state) => {
-   
+
     return {
         currentUserChat: state.Main.currentUserChat
     }
