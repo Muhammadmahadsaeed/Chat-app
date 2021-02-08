@@ -69,9 +69,8 @@
     .form-field {
       flex: 1;
       border: none;
-   
       flex-direction: row;
-      justify-content: space-between;
+      // justify-content: space-between;
       align-items: center;
     }
     // > div {
@@ -86,9 +85,10 @@
     //     display: inline-block;
     .input {
       flex: 1;
-      width: 101%;
+      width: 90%;
       border-radius: 100px;
       height: 3.5rem;
+      padding: 0px 20px;
       // border: none;
       // outline: none;
     }

@@ -125,9 +125,9 @@ export class Chat extends Component {
       <div
         style={{
           flex: 1,
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
+        //   flexDirection: "row",
+        //   justifyContent: "center",
+        //   alignItems: "center",
         }}
       >
         <Form
