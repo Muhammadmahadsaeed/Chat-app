@@ -16,6 +16,7 @@ const ConversationEmpty = () => (
 
 class ChatContent extends React.Component {
   render() {
+   
     return (
       <Switch>
         <Route exact path="/chat/:id" component={ChatWindow} />

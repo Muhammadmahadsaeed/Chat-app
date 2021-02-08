@@ -1,0 +1,41 @@
+.search-modal-field {
+  // height: calc(100vh - calc(100vh / 2));
+  .search-bar-field {
+    background: rgba(247, 243, 243, 0.404);
+    padding: 10px 10px;
+
+    > div {
+      display: flex;
+      border-radius: 3rem;
+      background: #ffffff;
+      overflow: hidden;
+
+      .search-input-field {
+        width: 100%;
+        flex:  1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: 15px;
+        > div{
+          display: inline-block;
+        }
+        input {
+          
+          border: none;
+          outline: none;
+          padding: 10px 30px 10px 10px;
+          font-weight: 500;
+          width: 100%;
+        }
+      }
+
+      .mg-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+      }
+    }
+  }
+}

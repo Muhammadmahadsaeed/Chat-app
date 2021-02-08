@@ -11,15 +11,15 @@ import axios from 'axios'
 class Login extends Component {
 
     handleSubmit = values => {
-        console.log(values)
-        // axios.post(`http://192.168.0.96:401/bwccrm/login`, { email: values.email, password: values.password })
-        //     .then(res => {
-        //         localStorage.setItem('user', JSON.stringify(res.data))
+       
+        axios.post(`http://192.168.0.96:401/bwccrm/login`, { email: values.email, password: values.password })
+            .then(res => {
+                localStorage.setItem('user', JSON.stringify(res.data))
                 this.props.history.push('/')
-            // })
-            // .catch((err) => {
-            //     console.log(err.message)
-            // })
+            })
+            .catch((err) => {
+                console.log(err.message)
+            })
 
 
     };
