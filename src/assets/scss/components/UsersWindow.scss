@@ -8,14 +8,19 @@
   .user-window-header {
     flex: 1;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-   
+    display: flex;
+
     div {
       display: inline-block;
-    
+    }
+    .dropdown-btn > .ant-dropdown-trigger {
+      border: none;
+      background: none;
     }
   }
+
   .search-bar {
     background: rgba(247, 243, 243, 0.404);
     padding: 10px 10px;
@@ -51,11 +56,11 @@
 
 .user-window-wraper {
   .recent-chats {
-    // overflow: auto;
-    // height: 84vh;
-    margin-top: 30px;
     overflow: auto;
-    max-height: calc(100vh - calc(80vh / 2));
+    height: calc(100vh - calc(80vh / 2));
+  }
+  .recent-chats-heading {
+    padding: 10px 10px 0px 10px;
   }
   .chat-thumb {
     display: flex;
@@ -84,8 +89,8 @@
         columns: #000000;
         font-weight: 500;
       }
-      .time {
-      }
+      // .time {
+      // }
     }
   }
 }

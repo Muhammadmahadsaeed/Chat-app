@@ -25,7 +25,7 @@ export class ChatWindow extends Component {
                 </div>
 
                 <div className="chat-wrapper">
-                    <Chat {...this.props} />
+                    <Chat  />
                 </div>
 
                 {/* <div>
