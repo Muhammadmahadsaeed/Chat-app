@@ -10,66 +10,24 @@ import { Actions } from "./../../store/actions";
 import axios from "axios";
 import Scrollbars from "react-custom-scrollbars";
 import SearchModal from "./search-modal/modal";
-
+import { Menu, Dropdown, Button, message, Space, Tooltip, Avatar } from "antd";
+import { DownOutlined, PlusOutlined } from "@ant-design/icons";
+import CreateGroupModal from "./create-group-modal/CreateGroupModal";
 class UsersWindow extends Component {
 
   constructor(props) {
+   
     super(props);
-
+    this.showGroupModal = React.createRef()
     this.state = {
       data: [],
       showModal: false
-      // data: [
-      //   {
-      //     id: 1,
-      //     avatar: "https://picsum.photos/200/300?random=1",
-      //     name: "Kiran khan",
-      //     time: "2 AM",
-      //   },
-      //   {
-      //     id: 2,
-      //     avatar: "https://picsum.photos/200/300?random=1",
-      //     name: "Lol",
-      //     time: "2 AM",
-      //   },
-      //   {
-      //     id: 3,
-      //     avatar: "https://picsum.photos/200/300?random=1",
-      //     name: "CI CD",
-      //     time: "2 AM",
-      //   },
-      //   {
-      //     id: 4,
-      //     avatar: "https://picsum.photos/200/300?random=1",
-      //     name: "Iqra Muneer",
-      //     time: "2 AM",
-      //   },
-      //   {
-      //     id: 5,
-      //     avatar: "https://picsum.photos/200/300?random=1",
-      //     name: "Bhai Log",
-      //     time: "2 AM",
-      //   },
-      //   {
-      //     id: 6,
-      //     avatar: "https://picsum.photos/200/300?random=1",
-      //     name: "Yasir Hussain",
-      //     time: "2 AM",
-      //   },
-      //   {
-      //     id: 7,
-      //     avatar: "https://picsum.photos/200/300?random=1",
-      //     name: "Yasir Hussain",
-      //     time: "2 AM",
-      //   },
-      // ],
+      
     };
   }
   componentDidMount() {
     let user = JSON.parse(localStorage.getItem('user'))
-    // let user = localStorage.getItem('user')
     if (!user) {
-
       this.props.history.push('/login')
     }
     else {
@@ -90,12 +48,14 @@ class UsersWindow extends Component {
   }
 
   onSearchPress = (active) => {
-  
     this.setState({ showModal: active })
   }
-  // shouldComponentUpdate(newProps){
-  //   console.log("newprops",newProps)
-  // }
+  showCreateGroupModal() {
+    console.log("press")
+    this.showGroupModal.showModal()
+  }
+ 
+
   render() {
     const { data } = this.state;
     return (
@@ -106,9 +66,19 @@ class UsersWindow extends Component {
           {this.state.showModal ? <SearchModal onSearchPress={this.onSearchPress} history={this.props.history} /> :
             <>
               <SearchBar onSearchPress={this.onSearchPress} />
-              <div className="recent-chats-heading">
-                <p>RECENT CHATS</p>
+              <div className="new-recent-chat">
+                <div className="recent-chats-heading">
+                  <p>RECENT CHATS</p>
+                </div>
+                <div style={{ paddingRight: 10 }}>
+
+                  <Button style={{ borderRadius: 100 }} onClick={()=> this.showCreateGroupModal()}>
+                    <PlusOutlined /> New Group Chat
+                    </Button>
+
+                </div>
               </div>
+
               <div className="recent-chats">
                 <Scrollbars autoHide>
                   {data.map((e, i) => {
@@ -120,6 +90,7 @@ class UsersWindow extends Component {
                   })}
                 </Scrollbars>
               </div>
+              <CreateGroupModal ref={(target) => (this.showGroupModal = target)}  />
             </>
           }
         </div>

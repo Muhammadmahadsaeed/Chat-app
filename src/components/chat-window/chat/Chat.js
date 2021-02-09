@@ -6,15 +6,23 @@ import {
 } from "@ant-design/icons";
 import Pusher from 'pusher-js';
 import { Scrollbars } from "react-custom-scrollbars";
-
+import pusherConfig from '../../../api/pusher.json';
 export class Chat extends Component {
   chatBodyRef = React.createRef();
   formRef = React.createRef();
-  state = {
-    info: {},
-    msgList: [],
-    currentUser: "",
-  };
+  constructor() {
+    super()
+    this.state = {
+      info: {},
+      msgList: [],
+      currentUser: "",
+      chats: []
+    };
+    this.pusher = new Pusher(pusherConfig.PUSHER_APP_KEY, pusherConfig);
+    this.chatRoom = this.pusher.subscribe('bwccrm-chat');
+    
+  }
+
   componentDidMount() {
     // const data = this.props.data ? this.props.data : {};
     let user = JSON.parse(localStorage.getItem('user'))
@@ -25,8 +33,12 @@ export class Chat extends Component {
       this.setState({ user: user })
       this.getConversation(this.getUserId())
     }
-    
+    this.chatRoom.bind('dispatch', (d) => {
+      alert('An event was triggered with message: ' + d);
+    },this);
+
   }
+
   getUserId() {
     const { id } = this.props.match.params
 
@@ -36,7 +48,7 @@ export class Chat extends Component {
     let user = JSON.parse(localStorage.getItem('user'))
     axios.post(`http://192.168.0.96:401/bwccrm/fetchMessage`, { user_id: user.data.user_id, from_id: user.data.user_id, to_id: currentId })
       .then(res => {
-        console.log("get message=======", res.data.messages)
+
         this.setState({ msgList: res.data.messages })
       })
       .catch((err) => {
@@ -53,9 +65,8 @@ export class Chat extends Component {
     }
     this.scrollToBottom()
   }
- 
-  onSend = (values) => {
 
+  onSend = (values) => {
     let user = JSON.parse(localStorage.getItem('user'))
     const { id } = this.props.match.params
     const message_to_id = parseInt(parseInt(id))
@@ -63,17 +74,18 @@ export class Chat extends Component {
       axios.post(`http://192.168.0.96:401/bwccrm/sendMessage`, { user_id: user.data.user_id, loginuser_id: user.data.user_id, message_to: message_to_id, message_body: values.newMsg })
         .then(res => {
           console.log("message sent")
+
         })
         .catch((err) => {
           console.log(err.message)
         })
-        this.setState({
-          msgList: [...this.state.msgList, values.newMsg]
-        })
+      // this.setState({
+      //   msgList: [...this.state.msgList, values.newMsg]
+      // })
       this.formRef.current.setFieldsValue({
         newMsg: ''
       });
-     
+
     }
   };
   emptyClick = (e) => {
@@ -119,18 +131,13 @@ export class Chat extends Component {
   );
   chatContentFooter = () => (
     <div className="input-box">
-      <div style={{ background: "red",marginRight:20 }}>attachements</div>
+      <div style={{ background: "red", marginRight: 20 }}>attachements</div>
       <div
         style={{
           flex: 1,
-<<<<<<< HEAD
-          display: "flex",
-          flexDirection: "row",
-=======
           //   flexDirection: "row",
           //   justifyContent: "center",
           //   alignItems: "center",
->>>>>>> d0f69331dc7d70fb4978d5d981befceeeac88f3b
         }}
       >
         <Form

@@ -5,6 +5,16 @@
     background: #f7f5f5;
     padding: 10px 10px;
   }
+  .new-recent-chat{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    >div{
+      display: inline-block
+    }
+  }
   .user-window-header {
     flex: 1;
     flex-direction: row;

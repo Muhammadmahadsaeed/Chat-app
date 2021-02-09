@@ -3,8 +3,6 @@ import ChatHeader from './chat-header/ChatHeader'
 import Chat from './chat/Chat'
 
 import { connect } from 'react-redux'
-import InputBox from './input-box/InputBox';
-import ChatContent from './ChatContent';
 // import { ACtions } from './../../store/actions'
 
 export class ChatWindow extends Component {
@@ -28,10 +26,6 @@ export class ChatWindow extends Component {
                 <div className="chat-wrapper">
                     <Chat match={this.props.match} location={this.props.location} />
                 </div>
-
-                {/* <div>
-                    <InputBox {...this.props}/>
-                </div> */}
             </div>
         )
     }
