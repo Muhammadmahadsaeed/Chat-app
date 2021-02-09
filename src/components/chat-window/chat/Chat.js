@@ -1,16 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Avatar, Divider, Input, Form, Button, Menu } from "antd";
+import { Input, Form, Button, Menu } from "antd";
 import {
-  FileOutlined,
   SendOutlined,
-  PaperClipOutlined,
-  SmileOutlined,
-  AudioMutedOutlined,
-  UserOutlined,
-  DeleteOutlined,
 } from "@ant-design/icons";
+import Pusher from 'pusher-js';
 import { Scrollbars } from "react-custom-scrollbars";
+
 export class Chat extends Component {
   chatBodyRef = React.createRef();
   formRef = React.createRef();
@@ -19,65 +15,66 @@ export class Chat extends Component {
     msgList: [],
     currentUser: "",
   };
-  // componentDidMount() {
-  //     const data = this.props.data ? this.props.data : {};
-  //     let user = JSON.parse(localStorage.getItem('user'))
+  componentDidMount() {
+    // const data = this.props.data ? this.props.data : {};
+    let user = JSON.parse(localStorage.getItem('user'))
+    if (!user) {
+      this.props.history.push('/login')
+    }
+    else {
+      this.setState({ user: user })
+      this.getConversation(this.getUserId())
+    }
+    
+  }
+  getUserId() {
+    const { id } = this.props.match.params
 
-  //     if (!user) {
-  //         this.props.history.push('/login')
-  //     }
-  //     else {
-  //         this.setState({ user: user })
-  //         this.getConversation(this.getUserId())
-  //     }
-
-  // }
-  // getUserId() {
-  //     const { id } = this.props.match.params
-  //     return parseInt(parseInt(id))
-  // }
-  // getConversation = currentId =>  {
-  //     let user = JSON.parse(localStorage.getItem('user'))
-  //     axios.post(`http://192.168.0.96:401/bwccrm/fetchMessage`, { user_id: user.data.user_id, from_id: user.data.user_id, to_id: currentId })
-  //         .then(res => {
-  //             console.log("get message=======", res.data.messages)
-  //             this.setState({ msgList: res.data.messages })
-  //         })
-  //         .catch((err) => {
-  //             console.log(err.message)
-  //         })
-  // }
-  // scrollToBottom = () => {
-  //     this.chatBodyRef.current.scrollToBottom()
-  // }
-  // componentDidUpdate(prevProps) {
-  //     let user = JSON.parse(localStorage.getItem('user'))
-  //     if (this.props.location.pathname !== prevProps.location.pathname) {
-  //         this.getConversation(this.getUserId())
-  //     }
-  //     this.scrollToBottom()
-  // }
+    return parseInt(parseInt(id))
+  }
+  getConversation = currentId => {
+    let user = JSON.parse(localStorage.getItem('user'))
+    axios.post(`http://192.168.0.96:401/bwccrm/fetchMessage`, { user_id: user.data.user_id, from_id: user.data.user_id, to_id: currentId })
+      .then(res => {
+        console.log("get message=======", res.data.messages)
+        this.setState({ msgList: res.data.messages })
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
+  }
+  scrollToBottom = () => {
+    this.chatBodyRef.current.scrollToBottom()
+  }
+  componentDidUpdate(prevProps) {
+    let user = JSON.parse(localStorage.getItem('user'))
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      this.getConversation(this.getUserId())
+    }
+    this.scrollToBottom()
+  }
+ 
   onSend = (values) => {
-    console.log("dba");
-    //     let user = JSON.parse(localStorage.getItem('user'))
-    //     const { id } = this.props.match.params
-    //     const message_to_id = parseInt(parseInt(id))
-    //     if (values.newMsg) {
-    //         axios.post(`http://192.168.0.96:401/bwccrm/sendMessage`, { user_id: user.data.user_id, loginuser_id: user.data.user_id, message_to: message_to_id, message_body: values.newMsg })
-    //             .then(res => {
-    //                 console.log("message sent")
-    //             })
-    //             .catch((err) => {
-    //                 console.log(err.message)
-    //             })
 
-    //         this.formRef.current.setFieldsValue({
-    //             newMsg: ''
-    //         });
-    //         // 	this.setState({
-    //         // 		msgList: [...this.state.msgList, newMsgData]
-    //         // 	})
-    //     }
+    let user = JSON.parse(localStorage.getItem('user'))
+    const { id } = this.props.match.params
+    const message_to_id = parseInt(parseInt(id))
+    if (values.newMsg) {
+      axios.post(`http://192.168.0.96:401/bwccrm/sendMessage`, { user_id: user.data.user_id, loginuser_id: user.data.user_id, message_to: message_to_id, message_body: values.newMsg })
+        .then(res => {
+          console.log("message sent")
+        })
+        .catch((err) => {
+          console.log(err.message)
+        })
+        this.setState({
+          msgList: [...this.state.msgList, values.newMsg]
+        })
+      this.formRef.current.setFieldsValue({
+        newMsg: ''
+      });
+     
+    }
   };
   emptyClick = (e) => {
     e.preventDefault();
@@ -85,38 +82,39 @@ export class Chat extends Component {
 
   chatContentBody = () => (
     <div className="chat-content-body">
-      {/* <Scrollbars ref={this.chatBodyRef} autoHide> */}
+      <Scrollbars ref={this.chatBodyRef} autoHide>
 
-      {/* {this.state.msgList.map((elm, i) => {
+        {this.state.msgList.map((elm, i) => {
 
-                    return ( */}
-      {/* <> */}
-      {/* {elm.message_from != this.state.user.data.user_id ? */}
-      <div
-        className="message-wrapper"
-        // key={i}
-      >
-        <div className="message">
-          user
-          {/* {elm.message_body} */}
-        </div>
-      </div>
-      {/* : */}
-      <div
-        className="message-wrapper"
-        //  key={i}
-      >
-        <div className="message  sent">
-          sender
-          {/* {elm.message_body} */}
-        </div>
-      </div>
-      {/* } */}
-      {/* </> */}
-      {/* )
-                })} */}
+          return (
+            <>
+              {elm.message_from != this.state.user.data.user_id ?
+                <div
+                  className="message-wrapper"
+                  key={i}
+                >
+                  <div className="message">
 
-      {/* </Scrollbars> */}
+                    {elm.message_body}
+                  </div>
+                </div>
+                :
+                <div
+                  className="message-wrapper"
+                  key={i}
+                >
+                  <div className="message  sent">
+
+                    {elm.message_body}
+                  </div>
+                </div>
+              }
+            </>
+          )
+        })
+        }
+
+      </Scrollbars>
     </div>
   );
   chatContentFooter = () => (
@@ -125,8 +123,14 @@ export class Chat extends Component {
       <div
         style={{
           flex: 1,
+<<<<<<< HEAD
           display: "flex",
           flexDirection: "row",
+=======
+          //   flexDirection: "row",
+          //   justifyContent: "center",
+          //   alignItems: "center",
+>>>>>>> d0f69331dc7d70fb4978d5d981befceeeac88f3b
         }}
       >
         <Form

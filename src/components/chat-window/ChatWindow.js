@@ -17,6 +17,7 @@ export class ChatWindow extends Component {
     }
 
     render() {
+        
         const { currentUserChat } = this.props;
         return (
             <div className="chat-window-wrapper">
@@ -25,7 +26,7 @@ export class ChatWindow extends Component {
                 </div>
 
                 <div className="chat-wrapper">
-                    <Chat  />
+                    <Chat match={this.props.match} location={this.props.location} />
                 </div>
 
                 {/* <div>
