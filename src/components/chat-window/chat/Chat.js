@@ -121,13 +121,12 @@ export class Chat extends Component {
   );
   chatContentFooter = () => (
     <div className="input-box">
-      <div>attachements</div>
+      <div style={{ background: "red",marginRight:20 }}>attachements</div>
       <div
         style={{
           flex: 1,
-        //   flexDirection: "row",
-        //   justifyContent: "center",
-        //   alignItems: "center",
+          display: "flex",
+          flexDirection: "row",
         }}
       >
         <Form

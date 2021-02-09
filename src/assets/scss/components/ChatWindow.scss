@@ -68,9 +68,7 @@
     align-items: center;
     .form-field {
       flex: 1;
-      border: none;
       flex-direction: row;
-      // justify-content: space-between;
       align-items: center;
     }
     // > div {
@@ -84,13 +82,10 @@
     //     width: 80%;
     //     display: inline-block;
     .input {
-      flex: 1;
-      width: 90%;
       border-radius: 100px;
-      height: 3.5rem;
+      height: 3.2rem;
       padding: 0px 20px;
-      // border: none;
-      // outline: none;
+     
     }
     //   }
     // }
